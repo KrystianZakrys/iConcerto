@@ -34,7 +34,7 @@ namespace iConcerto
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -55,8 +55,8 @@ namespace iConcerto
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "xxxxxx",
-               appSecret: "xxxxxxxxx");
+               appId: "381994722579728",
+               appSecret: "434f2ed8ced46ae5952013684e33021c");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{

@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using iConcerto.Models;
+using iConcerto.Repository;
 
 namespace iConcerto.Controllers
 {
@@ -18,14 +19,20 @@ namespace iConcerto.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private readonly ILocationsRepository _locationsRepository;
+
         public AccountController()
         {
+            _locationsRepository = new LocationsRepository();
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager ,
+            LocationsRepository LocationsRepository)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+
+            _locationsRepository = LocationsRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -139,7 +146,8 @@ namespace iConcerto.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            RegisterViewModel registerViewModel = new RegisterViewModel() { LocationsList = _locationsRepository.GetLocations() };
+            return View(registerViewModel);
         }
 
         //
@@ -156,12 +164,14 @@ namespace iConcerto.Controllers
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    var userData = new UserData() { FirstMidName = user.Id, LastName = "", ApplicationUser = user, CreateDate = DateTime.Now };
 
                     return RedirectToAction("Index", "Home");
                 }
