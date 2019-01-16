@@ -174,6 +174,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -183,10 +184,19 @@
     <Compile Include="Migrations\201901151526173_init.Designer.cs">
       <DependentUpon>201901151526173_init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901161019346_Modele.cs" />
+    <Compile Include="Migrations\201901161019346_Modele.Designer.cs">
+      <DependentUpon>201901161019346_Modele.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901161026057_Modele1.cs" />
+    <Compile Include="Migrations\201901161026057_Modele1.Designer.cs">
+      <DependentUpon>201901161026057_Modele1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\DbEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -248,6 +258,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Events\Create.cshtml" />
+    <Content Include="Views\Events\Delete.cshtml" />
+    <Content Include="Views\Events\Details.cshtml" />
+    <Content Include="Views\Events\Edit.cshtml" />
+    <Content Include="Views\Events\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -268,6 +283,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201901151526173_init.resx">
       <DependentUpon>201901151526173_init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161019346_Modele.resx">
+      <DependentUpon>201901161019346_Modele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161026057_Modele1.resx">
+      <DependentUpon>201901161026057_Modele1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

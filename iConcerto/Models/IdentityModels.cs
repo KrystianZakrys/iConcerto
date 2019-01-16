@@ -24,6 +24,10 @@ namespace iConcerto.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        //my entities
+        public DbSet<UserData> Users { get; set; }
+        public DbSet<Events> Posts { get; set; }
+        public DbSet<Locations> Locations { get; set; }
 
         public static ApplicationDbContext Create()
         {
