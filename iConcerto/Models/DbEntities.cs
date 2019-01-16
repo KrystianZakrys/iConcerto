@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace iConcerto.Models
 {
@@ -19,6 +20,8 @@ namespace iConcerto.Models
         public string FirstMidName { get; set; }
         public DateTime CreateDate { get; set; }
 
+        public virtual ApplicationUser ApplicationUser { get; set; }
+
         public virtual ICollection<Events> Events { get; set; }
         public virtual Locations Locations { get; set; }
     }
@@ -29,6 +32,7 @@ namespace iConcerto.Models
         public string Name { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
+        public string ImageURL { get; set; }
         
         public virtual List<Locations> Locations { get; set; }
         public virtual ICollection<UserData> Users { get; set; }

@@ -10,114 +10,107 @@ using iConcerto.Models;
 
 namespace iConcerto.Controllers
 {
-    public class EventsController : Controller
+    public class UserDatasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Events
+        // GET: UserDatas
         public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+            return View(db.Users.ToList());
         }
 
-        // GET: EventsForUser
-        [Authorize]
-        public ActionResult EventsForUser()
-        {
-            return View(db.Posts.Where(p => p.Users == User).ToList());
-        }
-
-        // GET: Events/Details/5
+        // GET: UserDatas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Events events = db.Posts.Find(id);
-            if (events == null)
+            UserData userData = db.Users.Find(id);
+            if (userData == null)
             {
                 return HttpNotFound();
             }
-            return View(events);
+            return View(userData);
         }
 
-        // GET: Events/Create
+        // GET: UserDatas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Events/Create
+        // POST: UserDatas/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Description,Date")] Events events)
+        public ActionResult Create([Bind(Include = "ID,LastName,FirstMidName,CreateDate")] UserData userData)
         {
             if (ModelState.IsValid)
             {
-                db.Posts.Add(events);
+                db.Users.Add(userData);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(events);
+            return View(userData);
         }
 
-        // GET: Events/Edit/5
+        // GET: UserDatas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Events events = db.Posts.Find(id);
-            if (events == null)
+            UserData userData = db.Users.Find(id);
+            if (userData == null)
             {
                 return HttpNotFound();
             }
-            return View(events);
+            return View(userData);
         }
 
-        // POST: Events/Edit/5
+        // POST: UserDatas/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Description,Date")] Events events)
+        public ActionResult Edit([Bind(Include = "ID,LastName,FirstMidName,CreateDate")] UserData userData)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(events).State = EntityState.Modified;
+                db.Entry(userData).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(events);
+            return View(userData);
         }
 
-        // GET: Events/Delete/5
+        // GET: UserDatas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Events events = db.Posts.Find(id);
-            if (events == null)
+            UserData userData = db.Users.Find(id);
+            if (userData == null)
             {
                 return HttpNotFound();
             }
-            return View(events);
+            return View(userData);
         }
 
-        // POST: Events/Delete/5
+        // POST: UserDatas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Events events = db.Posts.Find(id);
-            db.Posts.Remove(events);
+            UserData userData = db.Users.Find(id);
+            db.Users.Remove(userData);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

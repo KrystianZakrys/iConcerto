@@ -176,7 +176,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EventsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\UserDatasController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -191,6 +193,18 @@
     <Compile Include="Migrations\201901161026057_Modele1.cs" />
     <Compile Include="Migrations\201901161026057_Modele1.Designer.cs">
       <DependentUpon>201901161026057_Modele1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901161121522_Modele_DodanieEmail.cs" />
+    <Compile Include="Migrations\201901161121522_Modele_DodanieEmail.Designer.cs">
+      <DependentUpon>201901161121522_Modele_DodanieEmail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901161123569_Modele_DodanieEmail1.cs" />
+    <Compile Include="Migrations\201901161123569_Modele_DodanieEmail1.Designer.cs">
+      <DependentUpon>201901161123569_Modele_DodanieEmail1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901161135485_Modele_DodanieEmailDel.cs" />
+    <Compile Include="Migrations\201901161135485_Modele_DodanieEmailDel.Designer.cs">
+      <DependentUpon>201901161135485_Modele_DodanieEmailDel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -263,6 +277,16 @@
     <Content Include="Views\Events\Details.cshtml" />
     <Content Include="Views\Events\Edit.cshtml" />
     <Content Include="Views\Events\Index.cshtml" />
+    <Content Include="Views\UserDatas\Create.cshtml" />
+    <Content Include="Views\UserDatas\Delete.cshtml" />
+    <Content Include="Views\UserDatas\Details.cshtml" />
+    <Content Include="Views\UserDatas\Edit.cshtml" />
+    <Content Include="Views\UserDatas\Index.cshtml" />
+    <Content Include="Views\Locations\Create.cshtml" />
+    <Content Include="Views\Locations\Delete.cshtml" />
+    <Content Include="Views\Locations\Details.cshtml" />
+    <Content Include="Views\Locations\Edit.cshtml" />
+    <Content Include="Views\Locations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -289,6 +313,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901161026057_Modele1.resx">
       <DependentUpon>201901161026057_Modele1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161121522_Modele_DodanieEmail.resx">
+      <DependentUpon>201901161121522_Modele_DodanieEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161123569_Modele_DodanieEmail1.resx">
+      <DependentUpon>201901161123569_Modele_DodanieEmail1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901161135485_Modele_DodanieEmailDel.resx">
+      <DependentUpon>201901161135485_Modele_DodanieEmailDel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

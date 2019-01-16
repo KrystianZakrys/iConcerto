@@ -7,14 +7,7 @@
     <div class="content">
         <h1 class="app-name">iConcerto</h1>
         <p class="app-description">Get notifications about events nearby. Just add your email, and select available location!</p>
-        <button class="btn-success btn btn-right" id="btn_join">JOIN</button>
-    </div>
-</div>
-<div class="fullscreenDiv" id="div2" hidden>
-    <div class="content">
-        <h1 class="app-name">iConcerto</h1>
-        <div class="fb-login-button" data-max-rows="1"
-             data-onlogin="userLogin" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="true" data-use-continue-as="false"></div>
+        @Html.ActionLink("JOIN", "Register", "Account",null,new { @class= "btn-success btn btn-right"})
     </div>
 </div>
 <script>
