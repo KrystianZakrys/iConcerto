@@ -55,8 +55,8 @@ namespace iConcerto
             //   consumerSecret: "");
 
             app.UseFacebookAuthentication(
-               appId: "381994722579728",
-               appSecret: "434f2ed8ced46ae5952013684e33021c");
+               appId: "xxxxxx",
+               appSecret: "xxxxxxxxx");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
