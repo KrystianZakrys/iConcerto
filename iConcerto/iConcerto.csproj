@@ -214,6 +214,10 @@
     <Compile Include="Migrations\201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.Designer.cs">
       <DependentUpon>201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901171031146_PoprawkaWyświetlaniaEvents.cs" />
+    <Compile Include="Migrations\201901171031146_PoprawkaWyświetlaniaEvents.Designer.cs">
+      <DependentUpon>201901171031146_PoprawkaWyświetlaniaEvents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -297,6 +301,7 @@
     <Content Include="Views\Locations\Details.cshtml" />
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
+    <Content Include="Views\Events\EventsForUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -338,6 +343,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.resx">
       <DependentUpon>201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901171031146_PoprawkaWyświetlaniaEvents.resx">
+      <DependentUpon>201901171031146_PoprawkaWyświetlaniaEvents.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

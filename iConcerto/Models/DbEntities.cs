@@ -29,8 +29,8 @@ namespace iConcerto.Models
         public DateTime Date { get; set; }
         public string ImageURL { get; set; }
         
-        public virtual List<Locations> Locations { get; set; }
-        public virtual ICollection<UserData> Users { get; set; }
+        public virtual int LocationId { get; set; }
+        public virtual int UserId { get; set; }
     }
 
     public class Locations

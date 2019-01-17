@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using iConcerto.Models;
+using Microsoft.AspNet.Identity;
 
 namespace iConcerto.Controllers
 {
@@ -24,7 +25,13 @@ namespace iConcerto.Controllers
         [Authorize]
         public ActionResult EventsForUser()
         {
-            return View(db.Events.Where(p => p.Users == User).ToList());
+            UserData userData = null;
+            var loggedUserId = User.Identity.GetUserId();
+            var users = db.Users.Where(u => u.ApplicationUserId == loggedUserId);
+            if (users.Any())
+                 userData = users.First();
+            var userEvents = userData != null ? db.Events.Where(p => p.UserId == userData.ID).ToList(): new List<Events>();
+            return View(userEvents);
         }
 
         // GET: Events/Details/5
