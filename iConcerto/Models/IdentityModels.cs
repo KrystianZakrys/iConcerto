@@ -26,7 +26,7 @@ namespace iConcerto.Models
         }
         //my entities
         public DbSet<UserData> Users { get; set; }
-        public DbSet<Events> Posts { get; set; }
+        public DbSet<Events> Events { get; set; }
         public DbSet<Locations> Locations { get; set; }
 
         public static ApplicationDbContext Create()

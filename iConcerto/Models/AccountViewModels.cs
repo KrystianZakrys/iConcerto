@@ -81,10 +81,9 @@ namespace iConcerto.Models
         [System.Web.Mvc.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
-        [Display(Name = "Location")]
-        public Locations Locations { get; set; }
-
-        public List<Locations> LocationsList { get; set; }
+        [Display(Name ="Location")]
+        public string SelectedLocations { get; set; }
+        public ICollection<System.Web.Mvc.SelectListItem> Locations { get; set; }
     }
 
     public class ResetPasswordViewModel

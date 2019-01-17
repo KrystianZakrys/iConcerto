@@ -206,6 +206,14 @@
     <Compile Include="Migrations\201901161135485_Modele_DodanieEmailDel.Designer.cs">
       <DependentUpon>201901161135485_Modele_DodanieEmailDel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.cs" />
+    <Compile Include="Migrations\201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.Designer.cs">
+      <DependentUpon>201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.cs" />
+    <Compile Include="Migrations\201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.Designer.cs">
+      <DependentUpon>201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -213,6 +221,7 @@
     <Compile Include="Models\DbEntities.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\LocationsRepository.cs" />
+    <Compile Include="Repository\UserDatasRepository.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -323,6 +332,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901161135485_Modele_DodanieEmailDel.resx">
       <DependentUpon>201901161135485_Modele_DodanieEmailDel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.resx">
+      <DependentUpon>201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.resx">
+      <DependentUpon>201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

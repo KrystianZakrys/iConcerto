@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using iConcerto.Models;
 using iConcerto.Repository;
+using System.Collections.Generic;
 
 namespace iConcerto.Controllers
 {
@@ -20,19 +21,22 @@ namespace iConcerto.Controllers
         private ApplicationUserManager _userManager;
 
         private readonly ILocationsRepository _locationsRepository;
+        private readonly IUserDatasRepository _userDatasRepository;
 
         public AccountController()
         {
             _locationsRepository = new LocationsRepository();
+            _userDatasRepository = new UserDatasRepository();
         }
 
         public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager ,
-            LocationsRepository LocationsRepository)
+            ILocationsRepository LocationsRepository, IUserDatasRepository userDatasRepository)
         {
             UserManager = userManager;
             SignInManager = signInManager;
 
             _locationsRepository = LocationsRepository;
+            _userDatasRepository = userDatasRepository;
         }
 
         public ApplicationSignInManager SignInManager
@@ -146,8 +150,8 @@ namespace iConcerto.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            RegisterViewModel registerViewModel = new RegisterViewModel() { LocationsList = _locationsRepository.GetLocations() };
-            return View(registerViewModel);
+            var factorOptions = _locationsRepository.GetLocations().Select(location => new SelectListItem { Text = location.Name, Value = location.ID.ToString() }).ToList();
+            return View(new RegisterViewModel { Locations = factorOptions});
         }
 
         //
@@ -170,15 +174,24 @@ namespace iConcerto.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    int location_id;
+                    Int32.TryParse(model.SelectedLocations, out location_id);
+                    var location = _locationsRepository.GetLocation(location_id);
+                    var userData = new UserData() { FirstMidName = user.Id, LastName = "", ApplicationUserId = user.Id, CreateDate = DateTime.Now , Locations = location};
 
-                    var userData = new UserData() { FirstMidName = user.Id, LastName = "", ApplicationUser = user, CreateDate = DateTime.Now };
-
-                    return RedirectToAction("Index", "Home");
+                    //insert into db
+                    if (_userDatasRepository.InsertUserData(userData))
+                    {
+                        return RedirectToAction("Index", "Home");
+                    };
+                    
                 }
                 AddErrors(result);
             }
 
             // If we got this far, something failed, redisplay form
+            var factorOptions = _locationsRepository.GetLocations().Select(location => new SelectListItem { Text = location.Name, Value = location.ID.ToString() }).ToList();
+            model.Locations = factorOptions;
             return View(model);
         }
 

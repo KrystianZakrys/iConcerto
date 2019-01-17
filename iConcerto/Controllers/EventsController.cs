@@ -17,14 +17,14 @@ namespace iConcerto.Controllers
         // GET: Events
         public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+            return View(db.Events.ToList());
         }
 
         // GET: EventsForUser
         [Authorize]
         public ActionResult EventsForUser()
         {
-            return View(db.Posts.Where(p => p.Users == User).ToList());
+            return View(db.Events.Where(p => p.Users == User).ToList());
         }
 
         // GET: Events/Details/5
@@ -34,7 +34,7 @@ namespace iConcerto.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Events events = db.Posts.Find(id);
+            Events events = db.Events.Find(id);
             if (events == null)
             {
                 return HttpNotFound();
@@ -57,7 +57,7 @@ namespace iConcerto.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Posts.Add(events);
+                db.Events.Add(events);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -72,7 +72,7 @@ namespace iConcerto.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Events events = db.Posts.Find(id);
+            Events events = db.Events.Find(id);
             if (events == null)
             {
                 return HttpNotFound();
@@ -103,7 +103,7 @@ namespace iConcerto.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Events events = db.Posts.Find(id);
+            Events events = db.Events.Find(id);
             if (events == null)
             {
                 return HttpNotFound();
@@ -116,8 +116,8 @@ namespace iConcerto.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Events events = db.Posts.Find(id);
-            db.Posts.Remove(events);
+            Events events = db.Events.Find(id);
+            db.Events.Remove(events);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,12 +7,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace iConcerto.Models
 {
-    public class BloggingContext : DbContext
-    {
-        public DbSet<UserData> Users { get; set; }
-        public DbSet<Events> Posts { get; set; }
-        public DbSet<Locations> Locations { get; set; }
-    }
+
     public class UserData
     {
         public int ID { get; set; }
@@ -20,7 +15,7 @@ namespace iConcerto.Models
         public string FirstMidName { get; set; }
         public DateTime CreateDate { get; set; }
 
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public virtual string ApplicationUserId { get; set; }
 
         public virtual ICollection<Events> Events { get; set; }
         public virtual Locations Locations { get; set; }
