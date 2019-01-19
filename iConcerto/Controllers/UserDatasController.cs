@@ -46,7 +46,7 @@ namespace iConcerto.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,LastName,FirstMidName,CreateDate")] UserData userData)
+        public ActionResult Create([Bind(Include = "UserDataId,LastName,FirstMidName,CreateDate")] UserData userData)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace iConcerto.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,LastName,FirstMidName,CreateDate")] UserData userData)
+        public ActionResult Edit([Bind(Include = "UserDataId,LastName,FirstMidName,CreateDate")] UserData userData)
         {
             if (ModelState.IsValid)
             {

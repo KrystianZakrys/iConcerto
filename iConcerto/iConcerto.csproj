@@ -200,57 +200,9 @@
     </Compile>
     <Compile Include="Helpers\ConcertoHelper.cs" />
     <Compile Include="Helpers\QuartzJob.cs" />
-    <Compile Include="Migrations\201901151526173_init.cs" />
-    <Compile Include="Migrations\201901151526173_init.Designer.cs">
-      <DependentUpon>201901151526173_init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901161019346_Modele.cs" />
-    <Compile Include="Migrations\201901161019346_Modele.Designer.cs">
-      <DependentUpon>201901161019346_Modele.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901161026057_Modele1.cs" />
-    <Compile Include="Migrations\201901161026057_Modele1.Designer.cs">
-      <DependentUpon>201901161026057_Modele1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901161121522_Modele_DodanieEmail.cs" />
-    <Compile Include="Migrations\201901161121522_Modele_DodanieEmail.Designer.cs">
-      <DependentUpon>201901161121522_Modele_DodanieEmail.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901161123569_Modele_DodanieEmail1.cs" />
-    <Compile Include="Migrations\201901161123569_Modele_DodanieEmail1.Designer.cs">
-      <DependentUpon>201901161123569_Modele_DodanieEmail1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901161135485_Modele_DodanieEmailDel.cs" />
-    <Compile Include="Migrations\201901161135485_Modele_DodanieEmailDel.Designer.cs">
-      <DependentUpon>201901161135485_Modele_DodanieEmailDel.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.cs" />
-    <Compile Include="Migrations\201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.Designer.cs">
-      <DependentUpon>201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.cs" />
-    <Compile Include="Migrations\201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.Designer.cs">
-      <DependentUpon>201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901171031146_PoprawkaWyświetlaniaEvents.cs" />
-    <Compile Include="Migrations\201901171031146_PoprawkaWyświetlaniaEvents.Designer.cs">
-      <DependentUpon>201901171031146_PoprawkaWyświetlaniaEvents.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901191617404_DeleteLocationFromUserData.cs" />
-    <Compile Include="Migrations\201901191617404_DeleteLocationFromUserData.Designer.cs">
-      <DependentUpon>201901191617404_DeleteLocationFromUserData.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901191618253_DeleteLocationFromUserData1.cs" />
-    <Compile Include="Migrations\201901191618253_DeleteLocationFromUserData1.Designer.cs">
-      <DependentUpon>201901191618253_DeleteLocationFromUserData1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901191639545_EventsToUsers.cs" />
-    <Compile Include="Migrations\201901191639545_EventsToUsers.Designer.cs">
-      <DependentUpon>201901191639545_EventsToUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901191939472_NewBeginning.cs" />
-    <Compile Include="Migrations\201901191939472_NewBeginning.Designer.cs">
-      <DependentUpon>201901191939472_NewBeginning.cs</DependentUpon>
+    <Compile Include="Migrations\201901192008540_NewBeginnin.cs" />
+    <Compile Include="Migrations\201901192008540_NewBeginnin.Designer.cs">
+      <DependentUpon>201901192008540_NewBeginnin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -357,44 +309,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901151526173_init.resx">
-      <DependentUpon>201901151526173_init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901161019346_Modele.resx">
-      <DependentUpon>201901161019346_Modele.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901161026057_Modele1.resx">
-      <DependentUpon>201901161026057_Modele1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901161121522_Modele_DodanieEmail.resx">
-      <DependentUpon>201901161121522_Modele_DodanieEmail.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901161123569_Modele_DodanieEmail1.resx">
-      <DependentUpon>201901161123569_Modele_DodanieEmail1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901161135485_Modele_DodanieEmailDel.resx">
-      <DependentUpon>201901161135485_Modele_DodanieEmailDel.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.resx">
-      <DependentUpon>201901170956486_105617012019_DodawanieAppNetUserDoUserDataZlokacja.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.resx">
-      <DependentUpon>201901171008232_PoprawkaRejestracji-ZamiastUseraDodajemyJegoIDDoUserDatas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901171031146_PoprawkaWyświetlaniaEvents.resx">
-      <DependentUpon>201901171031146_PoprawkaWyświetlaniaEvents.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901191617404_DeleteLocationFromUserData.resx">
-      <DependentUpon>201901191617404_DeleteLocationFromUserData.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901191618253_DeleteLocationFromUserData1.resx">
-      <DependentUpon>201901191618253_DeleteLocationFromUserData1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901191639545_EventsToUsers.resx">
-      <DependentUpon>201901191639545_EventsToUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901191939472_NewBeginning.resx">
-      <DependentUpon>201901191939472_NewBeginning.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901192008540_NewBeginnin.resx">
+      <DependentUpon>201901192008540_NewBeginnin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

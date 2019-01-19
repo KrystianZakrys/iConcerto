@@ -7,13 +7,13 @@ namespace iConcerto.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class PoprawkaWyświetlaniaEvents : IMigrationMetadata
+    public sealed partial class NewBeginnin : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PoprawkaWyświetlaniaEvents));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewBeginnin));
         
         string IMigrationMetadata.Id
         {
-            get { return "201901171031146_PoprawkaWyświetlaniaEvents"; }
+            get { return "201901192008540_NewBeginnin"; }
         }
         
         string IMigrationMetadata.Source

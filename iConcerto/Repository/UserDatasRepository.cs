@@ -22,7 +22,7 @@ namespace iConcerto.Repository
             UserData userData = null;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
-                var query = db.Users.Where(l => l.ID == id);
+                var query = db.Users.Where(l => l.UserDataId == id);
                 if (query.Any())
                     userData = query.First();
             }

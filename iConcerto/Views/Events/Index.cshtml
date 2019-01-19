@@ -21,11 +21,11 @@
                     <div style="background-image:url('@item.ImageURL');" class="event-panel-container">
                         <div class="event-panel">
                             <div class="event-panel-options">
-                                <a href="@Url.Action("Details",new { id = item.ID})" class="btn btn-success"><i class="fas fa-info-circle"></i> Details</a>
+                                <a href="@Url.Action("Details",new { id = item.EventId})" class="btn btn-success"><i class="fas fa-info-circle"></i> Details</a>
                                 @if (isAdmin)
                                 {
-                                    <a href="@Url.Action("Edit",new { id = item.ID})" class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
-                                    <a href="@Url.Action("Delete",new { id = item.ID})" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                                    <a href="@Url.Action("Edit",new { id = item.EventId})" class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
+                                    <a href="@Url.Action("Delete",new { id = item.EventId})" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
                                 }
                             </div>
                             <h3>@Html.DisplayFor(modelItem => item.Name)</h3>

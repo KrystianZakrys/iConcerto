@@ -21,7 +21,6 @@ namespace iConcerto.Helpers
             {
                 DateTime nextDay = DateTime.Now.AddDays(1);
                 List<Events> events = db.Events.Where(e => e.Date <= nextDay).ToList<Events>();
-                String emailList = "";
                 foreach (Events item in events)
                 {
                     var client = new SmtpClient("smtp.gmail.com", 587)
@@ -35,9 +34,12 @@ namespace iConcerto.Helpers
                         Subject = "iConcerto Notification - " + item.Name,
                         Body = "Tommorow is " + item.Name + " at " + item.Date
                     };
-                    foreach (UserData userData in item.Users)
+                    foreach (UserData userData in item.EventToUser.Where(ue => ue.Notified == false).Select(ue => ue.UserData).ToList())
                     {
                         mailMessage.To.Add(userData.FirstMidName);
+                        EventToUser eventToUser = db.EventToUser.SingleOrDefault(eu => eu.UserData.UserDataId == userData.UserDataId && eu.Events.EventId == item.EventId);
+                        eventToUser.Notified = true;
+                        db.SaveChanges();
                     }
                     if(mailMessage.To != null && mailMessage.To.Count > 0)
                         client.Send(mailMessage);

@@ -50,7 +50,7 @@ namespace iConcerto.Controllers
             var users = db.Users.Where(u => u.ApplicationUserId == loggedUserId);
             if (users.Any())
                  userData = users.First();
-            var userEvents = userData != null ? userData.Events: new List<Events>();
+            var userEvents = userData != null ? userData.EventToUser.Select(eu => eu.Events).ToList(): new List<Events>();
             return View(userEvents);
         }
 
@@ -69,7 +69,7 @@ namespace iConcerto.Controllers
             //check if assigned
             var loggedUserId = User.Identity.GetUserId();
             UserData userData = db.Users.Where(ud => ud.ApplicationUserId == loggedUserId).First();
-            var isAssigned = userData.Events.Where(ue => ue.ID == events.ID).Any();
+            var isAssigned = userData.EventToUser.Select(eu => eu.Events).Where(ue => ue.EventId == events.EventId).Any();
             ViewBag.isAssigned = isAssigned;
             return View(events);
         }
@@ -130,7 +130,7 @@ namespace iConcerto.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Description,Date")] Events events)
+        public ActionResult Edit([Bind(Include = "EventId,Name,Description,Date")] Events events)
         {
             if (ModelState.IsValid)
             {
@@ -194,8 +194,9 @@ namespace iConcerto.Controllers
             var loggedUserId = User.Identity.GetUserId();
 
             UserData userData = db.Users.Where(ud => ud.ApplicationUserId == loggedUserId).First();
-            userData.Events.Add(events);
-            events.Users.Add(userData);
+
+            EventToUser eventToUser = new EventToUser() { Events = events, Notified = false, UserData = userData };
+            userData.EventToUser.Add(eventToUser);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
@@ -227,7 +228,8 @@ namespace iConcerto.Controllers
             var loggedUserId = User.Identity.GetUserId();
 
             UserData userData = db.Users.Where(ud => ud.ApplicationUserId == loggedUserId).First();
-            userData.Events.Remove(events);
+            EventToUser eventToUser = db.EventToUser.Where(ue => ue.UserData.UserDataId == userData.UserDataId && ue.Events.EventId == events.EventId).SingleOrDefault();
+            userData.EventToUser.Remove(eventToUser);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

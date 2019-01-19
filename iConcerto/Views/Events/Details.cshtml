@@ -18,11 +18,11 @@
             <p> @Html.DisplayFor(model => model.Description)</p>
             @if (!ViewBag.isAssigned)
             {
-                <a href="@Url.Action("AssignToUser", "Events", new { id = Model.ID })" class="btn btn-success account-panel-link pull-right events-details-assign">Join <i class="fas fa-user-plus"></i></a>
+                <a href="@Url.Action("AssignToUser", "Events", new { id = Model.EventId })" class="btn btn-success account-panel-link pull-right events-details-assign">Join <i class="fas fa-user-plus"></i></a>
             }
             else
             {
-                <a href="@Url.Action("UnassignFromUser", "Events", new { id = Model.ID })" class="btn btn-warning account-panel-link pull-right events-details-assign">Retreat <i class="fas fa-user-minus"></i></a>
+                <a href="@Url.Action("UnassignFromUser", "Events", new { id = Model.EventId })" class="btn btn-warning account-panel-link pull-right events-details-assign">Retreat <i class="fas fa-user-minus"></i></a>
             }
         </div>
     </div>

@@ -12,7 +12,7 @@
             {
             <div style="background-image:url('@item.ImageURL');" class="event-panel-container">
                 <div class="event-panel">
-                    <a href="@Url.Action("Details", new { id = item.ID})" class="btn btn-success"><i class="fas fa-info-circle"></i> Details</a>
+                    <a href="@Url.Action("Details", new { id = item.EventId})" class="btn btn-success"><i class="fas fa-info-circle"></i> Details</a>
 
                     <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                     <label>Date: </label>
