@@ -291,6 +291,8 @@
     <Content Include="Views\Events\EventsForUser.cshtml" />
     <Content Include="Views\Events\AssignToUser.cshtml" />
     <Content Include="Views\Events\UnassignFromUser.cshtml" />
+    <Content Include="Views\Events\ManageEventUsers.cshtml" />
+    <Content Include="Views\Events\UnassignUserByAdmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

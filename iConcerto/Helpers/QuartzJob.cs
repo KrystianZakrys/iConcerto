@@ -20,7 +20,8 @@ namespace iConcerto.Helpers
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 DateTime nextDay = DateTime.Now.AddDays(1);
-                List<Events> events = db.Events.Where(e => e.Date <= nextDay).ToList<Events>();
+                DateTime today = DateTime.Now;
+                List<Events> events = db.Events.Where(e => e.Date <= nextDay && e.Date > today).ToList<Events>();
                 foreach (Events item in events)
                 {
                     var client = new SmtpClient("smtp.gmail.com", 587)

@@ -1,0 +1,42 @@
+﻿@model iConcerto.Models.EventToUser
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>EventToUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Events.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Events.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserData.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserData.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notified)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notified)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ManageEventUsers")
+        </div>
+    }
+</div>

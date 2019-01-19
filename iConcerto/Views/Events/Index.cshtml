@@ -31,7 +31,10 @@
                             <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
                             <label>Date: </label>
                             <p>@Html.DisplayFor(modelItem => item.Date)</p>
-                            @*@Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "event-panel-link" })*@
+                            @if (isAdmin)
+                            {
+                                <a href="@Url.Action("ManageEventUsers", new { id = item.EventId })" class="account-panel-link event-panel-users"><i class="fas fa-address-book"></i></a>
+                            }
                         </div>
                     </div>
                 }

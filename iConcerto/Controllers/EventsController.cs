@@ -55,6 +55,7 @@ namespace iConcerto.Controllers
         }
 
         // GET: Events/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -111,6 +112,7 @@ namespace iConcerto.Controllers
         }
 
         // GET: Events/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -142,6 +144,7 @@ namespace iConcerto.Controllers
         }
 
         // GET: Events/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -232,6 +235,41 @@ namespace iConcerto.Controllers
             userData.EventToUser.Remove(eventToUser);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [Authorize]
+        public ActionResult ManageEventUsers(int id)
+        {
+            List<UserData> userData = db.EventToUser.Where(ue => ue.Events.EventId == id).Select(ue => ue.UserData).ToList();
+            ViewBag.eventId = id;
+            return View(userData);
+        }
+
+        [Authorize]
+        public ActionResult UnassignUserByAdmin(int id, int userId)
+        {
+            if (id == null || userId == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            EventToUser eventToUser = db.EventToUser.Where(eu => eu.Events.EventId == id && eu.UserData.UserDataId == userId).SingleOrDefault();
+            if (eventToUser == null)
+            {
+                return HttpNotFound();
+            }
+            return View(eventToUser);
+        }
+
+
+        [Authorize]
+        [HttpPost, ActionName("UnassignUserByAdmin")]
+        public ActionResult UnassignUserByAdminConfirmed(int id, int userId)
+        {
+            EventToUser eventToUser = db.EventToUser.Where(eu => eu.Events.EventId == id && eu.UserData.UserDataId == userId).SingleOrDefault();
+            db.EventToUser.Remove(eventToUser);
+            db.SaveChanges();
+
+            return RedirectToAction("ManageEventUsers","Events",new { id });
         }
 
         protected override void Dispose(bool disposing)
