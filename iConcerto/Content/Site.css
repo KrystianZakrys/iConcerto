@@ -7,6 +7,7 @@
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; /* Resize the background image to cover the entire container */
     color: white;
+
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -164,10 +165,12 @@ textarea {
 }
 
 .footer-wrapper {
-    top: 90%;
+    position: absolute;
+    bottom: 0;
     width: 100%;
-    text-align: center;
-    margin-top: 39%;
+    height: 50px;
+    padding-bottom: 40px;
+    padding-left: 10px;
 }
 
 .footer-content {
@@ -207,4 +210,76 @@ textarea {
 .event-panel .btn-success {
     margin-right: 5px;
     width: 100px;
+    z-index: 2;
+}
+
+.account-panel {
+    width: auto;
+    height: 90px;
+    background-color: rgba(0,0,0,0.3);
+    color: white;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    padding: 20px;
+}
+
+.account-panel-link {
+    color: white;
+    margin: 20px;
+}
+
+.account-panel-link:hover{
+    color: rgba(255,255,255,0.5);
+}
+
+.events-details-image {
+    max-width: 100%;
+    min-width: 100%;
+}
+
+.events-details-image-container {
+    max-width: 100%;
+    position: relative;
+}
+
+.events-details-image-text {
+    float: left;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 1000;
+    padding: 5px;
+    color: #FFFFFF;
+    font-weight: bold;
+    width: 100%;
+    height: 250px;
+    padding-top: 35px;
+    padding-left: 50px;
+}
+
+.button-back{
+    color: white;
+    font-size: medium;
+}
+
+.button-back:hover {
+    color: rgba(255,255,255,0.5);
+}
+
+.events-details-assign {
+    top: 30px;
+    position: absolute;
+    right: 20px;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    font-size: 30px;
+    padding: 5px;
+}
+
+.event-panel-options {
+    z-index: 10;
 }

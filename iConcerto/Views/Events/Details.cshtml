@@ -4,40 +4,28 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<h2>Details</h2>
-
+<br />
+<a href="@Url.Action("Index")" class="button-back"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
+<h2>Event details</h2>
 <div>
-    <h4>Events</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <div class="events-details-image-container">
+        <img src="@Model.ImageURL" class="events-details-image" />
+        <div class="events-details-image-text">
+            <h3><span class="label label-warning top-right">@Html.DisplayNameFor(model => model.Date): @Html.DisplayFor(model => model.Date)</span></h3>
+            <h2>@Html.DisplayFor(model => model.Name)</h2>
+            <label> @Html.DisplayNameFor(model => model.Description)</label>
+            <p> @Html.DisplayFor(model => model.Description)</p>
+            @if (!ViewBag.isAssigned)
+            {
+                <a href="@Url.Action("AssignToUser", "Events", new { id = Model.ID })" class="btn btn-success account-panel-link pull-right events-details-assign">Join <i class="fas fa-user-plus"></i></a>
+            }
+            else
+            {
+                <a href="@Url.Action("UnassignFromUser", "Events", new { id = Model.ID })" class="btn btn-warning account-panel-link pull-right events-details-assign">Retreat <i class="fas fa-user-minus"></i></a>
+            }
+        </div>
+    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-    </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

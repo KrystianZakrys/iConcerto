@@ -66,6 +66,11 @@ namespace iConcerto.Controllers
             {
                 return HttpNotFound();
             }
+            //check if assigned
+            var loggedUserId = User.Identity.GetUserId();
+            UserData userData = db.Users.Where(ud => ud.ApplicationUserId == loggedUserId).First();
+            var isAssigned = userData.Events.Where(ue => ue.ID == events.ID).Any();
+            ViewBag.isAssigned = isAssigned;
             return View(events);
         }
 
@@ -158,6 +163,70 @@ namespace iConcerto.Controllers
         {
             Events events = db.Events.Find(id);
             db.Events.Remove(events);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //GET: Events/AssignToUser/5
+        [Authorize]
+        public ActionResult AssignToUser(int id)
+        {
+            var loggedUserId = User.Identity.GetUserId();
+            UserData userData = db.Users.Where(ud => ud.ApplicationUserId == loggedUserId).First();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Events events = db.Events.Find(id);
+            if (events == null)
+            {
+                return HttpNotFound();
+            }
+            return View(events);
+        }
+
+        // POST: Events/AssignToUser/5
+        [HttpPost, ActionName("AssignToUser")]
+        [Authorize]
+        public ActionResult AssignToUserConfirmed(int id)
+        {
+            Events events = db.Events.Find(id);
+            var loggedUserId = User.Identity.GetUserId();
+
+            UserData userData = db.Users.Where(ud => ud.ApplicationUserId == loggedUserId).First();
+            userData.Events.Add(events);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        //GET: Events/UnassignFromUser/5
+        [Authorize]
+        public ActionResult UnassignFromUser(int id)
+        {
+            var loggedUserId = User.Identity.GetUserId();
+            UserData userData = db.Users.Where(ud => ud.ApplicationUserId == loggedUserId).First();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Events events = db.Events.Find(id);
+            if (events == null)
+            {
+                return HttpNotFound();
+            }
+            return View(events);
+        }
+
+        // POST: Events/UnassignFromUser/5
+        [HttpPost, ActionName("UnassignFromUser")]
+        [Authorize]
+        public ActionResult UnassignFromUserConfirmed(int id)
+        {
+            Events events = db.Events.Find(id);
+            var loggedUserId = User.Identity.GetUserId();
+
+            UserData userData = db.Users.Where(ud => ud.ApplicationUserId == loggedUserId).First();
+            userData.Events.Remove(events);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

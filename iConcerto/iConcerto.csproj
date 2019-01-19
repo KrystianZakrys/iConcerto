@@ -313,6 +313,8 @@
     <Content Include="Views\Locations\Edit.cshtml" />
     <Content Include="Views\Locations\Index.cshtml" />
     <Content Include="Views\Events\EventsForUser.cshtml" />
+    <Content Include="Views\Events\AssignToUser.cshtml" />
+    <Content Include="Views\Events\UnassignFromUser.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
