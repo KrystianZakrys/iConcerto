@@ -228,6 +228,14 @@
     <Compile Include="Migrations\201901171031146_PoprawkaWyświetlaniaEvents.Designer.cs">
       <DependentUpon>201901171031146_PoprawkaWyświetlaniaEvents.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901191617404_DeleteLocationFromUserData.cs" />
+    <Compile Include="Migrations\201901191617404_DeleteLocationFromUserData.Designer.cs">
+      <DependentUpon>201901191617404_DeleteLocationFromUserData.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901191618253_DeleteLocationFromUserData1.cs" />
+    <Compile Include="Migrations\201901191618253_DeleteLocationFromUserData1.Designer.cs">
+      <DependentUpon>201901191618253_DeleteLocationFromUserData1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ConcertoViewModels.cs" />
@@ -359,6 +367,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901171031146_PoprawkaWyświetlaniaEvents.resx">
       <DependentUpon>201901171031146_PoprawkaWyświetlaniaEvents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901191617404_DeleteLocationFromUserData.resx">
+      <DependentUpon>201901191617404_DeleteLocationFromUserData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901191618253_DeleteLocationFromUserData1.resx">
+      <DependentUpon>201901191618253_DeleteLocationFromUserData1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -18,7 +18,7 @@ namespace iConcerto.Models
         public virtual string ApplicationUserId { get; set; }
 
         public virtual ICollection<Events> Events { get; set; }
-        public virtual Locations Locations { get; set; }
+  
     }
 
     public class Events
@@ -42,7 +42,6 @@ namespace iConcerto.Models
         public float Lng { get; set; }
 
         public virtual List<Events> Events { get; set; }
-        public virtual List<UserData> Users { get; set; }
 
     }
 }

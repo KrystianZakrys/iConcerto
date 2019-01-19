@@ -150,8 +150,7 @@ namespace iConcerto.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            var factorOptions = _locationsRepository.GetLocations().Select(location => new SelectListItem { Text = location.Name, Value = location.ID.ToString() }).ToList();
-            return View(new RegisterViewModel { Locations = factorOptions});
+            return View();
         }
 
         //
@@ -174,10 +173,7 @@ namespace iConcerto.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    int location_id;
-                    Int32.TryParse(model.SelectedLocations, out location_id);
-                    var location = _locationsRepository.GetLocation(location_id);
-                    var userData = new UserData() { FirstMidName = user.Id, LastName = "", ApplicationUserId = user.Id, CreateDate = DateTime.Now , Locations = location};
+                    var userData = new UserData() { FirstMidName = user.Id, LastName = "", ApplicationUserId = user.Id, CreateDate = DateTime.Now };
 
                     //insert into db
                     if (_userDatasRepository.InsertUserData(userData))
@@ -190,8 +186,6 @@ namespace iConcerto.Controllers
             }
 
             // If we got this far, something failed, redisplay form
-            var factorOptions = _locationsRepository.GetLocations().Select(location => new SelectListItem { Text = location.Name, Value = location.ID.ToString() }).ToList();
-            model.Locations = factorOptions;
             return View(model);
         }
 
