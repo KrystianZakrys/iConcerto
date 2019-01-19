@@ -173,7 +173,7 @@ namespace iConcerto.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                    var userData = new UserData() { FirstMidName = user.Id, LastName = "", ApplicationUserId = user.Id, CreateDate = DateTime.Now };
+                    var userData = new UserData() { FirstMidName = user.Email, LastName = "", ApplicationUserId = user.Id, CreateDate = DateTime.Now };
 
                     //insert into db
                     if (_userDatasRepository.InsertUserData(userData))

@@ -1,66 +1,20 @@
 ﻿@model iConcerto.Models.Events
+<br />
+<a href="@Url.Action("Index")" class="button-back"><i class="fas fa-long-arrow-alt-left"></i> Back</a>
+<h3>Are you sure you want to join this event?</h3>
+<hr />
 
-<h3>Are you sure you want to join this?</h3>
 <div>
-    <h4>Events</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageURL)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LocationId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LocationId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.UserId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.UserId)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="AssignToUser" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <p>You will receive email notification 24h before <b>"@Model.Name"</b> event!</p>
+            <input type="submit" value="Join" class="btn btn-success pull-right" />
         </div>
     }
 </div>

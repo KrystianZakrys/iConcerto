@@ -28,6 +28,7 @@ namespace iConcerto.Models
         public DbSet<UserData> Users { get; set; }
         public DbSet<Events> Events { get; set; }
         public DbSet<Locations> Locations { get; set; }
+        //public DbSet<UserDataEvents> UserDataEvents { get; set; }
 
         public static ApplicationDbContext Create()
         {

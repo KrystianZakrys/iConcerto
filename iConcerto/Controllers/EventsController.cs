@@ -195,6 +195,7 @@ namespace iConcerto.Controllers
 
             UserData userData = db.Users.Where(ud => ud.ApplicationUserId == loggedUserId).First();
             userData.Events.Add(events);
+            events.Users.Add(userData);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

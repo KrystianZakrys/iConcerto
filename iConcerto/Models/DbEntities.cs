@@ -14,7 +14,7 @@ namespace iConcerto.Models
         public string LastName { get; set; }
         public string FirstMidName { get; set; }
         public DateTime CreateDate { get; set; }
-
+        
         public virtual string ApplicationUserId { get; set; }
 
         public virtual ICollection<Events> Events { get; set; }
@@ -30,7 +30,7 @@ namespace iConcerto.Models
         public string ImageURL { get; set; }
         
         public virtual int LocationId { get; set; }
-        public virtual int UserId { get; set; }
+        public virtual ICollection<UserData> Users { get; set; }
     }
 
 
@@ -44,4 +44,5 @@ namespace iConcerto.Models
         public virtual List<Events> Events { get; set; }
 
     }
+
 }
