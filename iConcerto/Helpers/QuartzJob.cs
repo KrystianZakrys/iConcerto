@@ -39,7 +39,8 @@ namespace iConcerto.Helpers
                     {
                         mailMessage.To.Add(userData.FirstMidName);
                     }
-                    client.Send(mailMessage);
+                    if(mailMessage.To != null && mailMessage.To.Count > 0)
+                        client.Send(mailMessage);
                 }
 
 

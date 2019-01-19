@@ -7,13 +7,13 @@ namespace iConcerto.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class EventsToUsersHope : IMigrationMetadata
+    public sealed partial class NewBeginning : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(EventsToUsersHope));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(NewBeginning));
         
         string IMigrationMetadata.Id
         {
-            get { return "201901191931505_EventsToUsersHope"; }
+            get { return "201901191939472_NewBeginning"; }
         }
         
         string IMigrationMetadata.Source

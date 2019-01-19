@@ -21,9 +21,9 @@ namespace iConcerto.Migrations
                 .ForeignKey("dbo.Events", t => t.Events_ID, cascadeDelete: true)
                 .Index(t => t.UserData_ID)
                 .Index(t => t.Events_ID);
-            
-            DropColumn("dbo.Events", "UserId");
-            DropColumn("dbo.Events", "UserData_ID");
+
+            //DropColumn("dbo.Events", "UserId");
+            //DropColumn("dbo.Events", "UserData_ID");
         }
         
         public override void Down()

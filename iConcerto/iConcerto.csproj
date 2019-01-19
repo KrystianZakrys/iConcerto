@@ -248,9 +248,9 @@
     <Compile Include="Migrations\201901191639545_EventsToUsers.Designer.cs">
       <DependentUpon>201901191639545_EventsToUsers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901191931505_EventsToUsersHope.cs" />
-    <Compile Include="Migrations\201901191931505_EventsToUsersHope.Designer.cs">
-      <DependentUpon>201901191931505_EventsToUsersHope.cs</DependentUpon>
+    <Compile Include="Migrations\201901191939472_NewBeginning.cs" />
+    <Compile Include="Migrations\201901191939472_NewBeginning.Designer.cs">
+      <DependentUpon>201901191939472_NewBeginning.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -393,8 +393,8 @@
     <EmbeddedResource Include="Migrations\201901191639545_EventsToUsers.resx">
       <DependentUpon>201901191639545_EventsToUsers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901191931505_EventsToUsersHope.resx">
-      <DependentUpon>201901191931505_EventsToUsersHope.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901191939472_NewBeginning.resx">
+      <DependentUpon>201901191939472_NewBeginning.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
