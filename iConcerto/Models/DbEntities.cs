@@ -33,6 +33,7 @@ namespace iConcerto.Models
         public virtual int UserId { get; set; }
     }
 
+
     public class Locations
     {
         public int ID { get; set; }

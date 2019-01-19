@@ -8,12 +8,32 @@ using System.Web;
 using System.Web.Mvc;
 using iConcerto.Models;
 using Microsoft.AspNet.Identity;
+using iConcerto.Helpers;
+using iConcerto.Repository;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace iConcerto.Controllers
 {
     public class EventsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        private readonly ILocationsRepository _locationsRepository;
+        private readonly IUserDatasRepository _userDatasRepository;
+
+        public EventsController()
+        {
+            _locationsRepository = new LocationsRepository();
+            _userDatasRepository = new UserDatasRepository();
+        }
+
+        public EventsController(ApplicationUserManager userManager, ApplicationSignInManager signInManager,
+            ILocationsRepository LocationsRepository, IUserDatasRepository userDatasRepository)
+        {
+           
+            _locationsRepository = LocationsRepository;
+            _userDatasRepository = userDatasRepository;
+        }
 
         // GET: Events
         public ActionResult Index()
@@ -30,7 +50,7 @@ namespace iConcerto.Controllers
             var users = db.Users.Where(u => u.ApplicationUserId == loggedUserId);
             if (users.Any())
                  userData = users.First();
-            var userEvents = userData != null ? db.Events.Where(p => p.UserId == userData.ID).ToList(): new List<Events>();
+            var userEvents = userData != null ? userData.Events: new List<Events>();
             return View(userEvents);
         }
 
@@ -50,9 +70,11 @@ namespace iConcerto.Controllers
         }
 
         // GET: Events/Create
+        [Authorize]
         public ActionResult Create()
         {
-            return View();
+            var factorOptions = _locationsRepository.GetLocations().Select(location => new SelectListItem { Text = location.Name, Value = location.ID.ToString() }).ToList();
+            return View(new EventsViewModel() { Locations = factorOptions });
         }
 
         // POST: Events/Create
@@ -60,8 +82,19 @@ namespace iConcerto.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Description,Date")] Events events)
+        [Authorize]
+        public ActionResult Create(EventsViewModel model)
         {
+            Int32.TryParse(model.SelectedLocations, out int LocationId);
+            string imageUrl = ConcertoHelper.UploadFileToAzureStorage(model.Files);
+            Events events = new Events()
+            {
+                Name = model.Name,
+                Description = model.Description,
+                Date = model.Date,
+                LocationId = LocationId,
+                ImageURL = imageUrl
+            };
             if (ModelState.IsValid)
             {
                 db.Events.Add(events);

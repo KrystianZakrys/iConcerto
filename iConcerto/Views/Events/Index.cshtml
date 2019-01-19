@@ -1,46 +1,41 @@
 ﻿@model IEnumerable<iConcerto.Models.Events>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Public events";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    bool isAdmin = User.Identity.Name.Contains("krystian.zakrys@gmail.com");
 }
 
-<h2>Index</h2>
+<h2>Public events</h2>
+    @if (isAdmin)
+    {
+        <p>
+            @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+        </p>
+    }
+        <div class="list-wrapper">
+            @if (Model.Any())
+            {
+                foreach (var item in Model)
+                {
+                    <div style="background-image:url('@item.ImageURL');" class="event-panel-container">
+                        <div class="event-panel">
+                            @if (isAdmin)
+                            {
+                                <a href="@Html.Action("Edit")" class="btn btn-success"><i class="fas fa-edit"></i> Edit</a>
+                                <a href="@Html.Action("Details")" class="btn btn-success"><i class="fas fa-info-circle"></i> Details</a>
+                                <a href="@Html.Action("Delete")" class="btn btn-danger"><i class="fas fa-trash"></i> Delete</a>
+                            }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
-</table>
+                            <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                            <label>Date: </label>
+                            <p>@Html.DisplayFor(modelItem => item.Date)</p>
+                            @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "event-panel-link" })
+                        </div>
+                    </div>
+                }
+            }
+            else {
+                @Html.Raw("There are no events here!");
+            }
+        </div>

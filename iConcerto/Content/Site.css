@@ -173,3 +173,38 @@ textarea {
 .footer-content {
     opacity: 0.6;
 }
+
+.list-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+.event-panel-container {
+    background-size: cover;
+}
+
+.event-panel {
+    background-color: rgba(0,0,0,0.5);
+    padding: 20px;
+    position: relative;
+}
+
+.event-panel * {
+
+    opacity: 1;
+}
+
+.event-panel-link {
+    position: absolute;
+    color: rgba(0,0,0,0);
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.event-panel .btn-success {
+    margin-right: 5px;
+    width: 100px;
+}

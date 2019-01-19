@@ -1,45 +1,31 @@
 ﻿@model IEnumerable<iConcerto.Models.Events>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Date)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageURL)
-        </th>
-        <th></th>
-    </tr>
+@{ bool isAdmin = User.Identity.Name.Contains("krystian.zakrys@gmail.com");}
+<h2>My events</h2>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageURL)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
 
-</table>
+
+    @if (Model.Any())
+    {
+        <div class="list-wrapper">
+            @foreach (var item in Model)
+            {
+            <div style="background-image:url('@item.ImageURL');" class="event-panel-container">
+                <div class="event-panel">
+                    <a href="@Html.Action("Details")" class="btn btn-success"><i class="fas fa-info-circle"></i> Details</a>
+
+                    <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                    <label>Date: </label>
+                    <p>@Html.DisplayFor(modelItem => item.Date)</p>
+                    @Html.ActionLink(" ", "Details", new { id = item.ID }, new { @class = "event-panel-link" })
+                </div>
+            </div>
+            }
+        </div>
+    }
+    else
+    {
+        @Html.Raw("You dont have assigned events! Go to ");
+        <a href="@Url.Action("Index","Events",null)" class="btn btn-success"><i class="fas fa-calendar-week"></i> Public events</a>
+     }
+  
